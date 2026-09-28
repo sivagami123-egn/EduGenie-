@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGenie - AI Educational Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🎓 EduGenie</div>
+    <p>AI-Powered Educational Assistant</p>
+</header>
+
+<section class="hero">
+    <h1>Learn Smarter with EduGenie</h1>
+    <p>
+        Ask questions, understand concepts, generate quizzes,
+        summarize content and create personalized learning paths.
+    </p>
+</section>
+
+<div class="container">
+
+    <!-- Ask Question -->
+    <div class="card">
+        <h2>💡 Ask EduGenie</h2>
+
+        <input
+            type="text"
+            id="question"
+            placeholder="Ask a question..."
+        >
+
+        <button onclick="askQuestion()">Ask Question</button>
+
+        <div id="answer" class="result"></div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="card">
+        <h2>📝 Generate Quiz</h2>
+
+        <input
+            type="text"
+            id="topic"
+            placeholder="Enter a topic e.g. Pythagoras Theorem"
+        >
+
+        <button onclick="generateQuiz()">Generate Quiz</button>
+
+        <div id="quiz" class="result"></div>
+    </div>
+
+    <!-- Learning Path -->
+    <div class="card">
+        <h2>📚 Learning Path</h2>
+
+        <input
+            type="text"
+            id="learningTopic"
+            placeholder="Enter topic e.g. SQL"
+        >
+
+        <button onclick="generatePath()">Create Learning Path</button>
+
+        <div id="path" class="result"></div>
+    </div>
+
+    <!-- Summary -->
+    <div class="card">
+        <h2>📖 Text Summarizer</h2>
+
+        <textarea
+            id="text"
+            placeholder="Paste educational text here..."
+        ></textarea>
+
+        <button onclick="summarizeText()">Summarize</button>
+
+        <div id="summary" class="result"></div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 EduGenie | AI-Powered Learning Assistant</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
