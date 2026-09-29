@@ -1,95 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduGenie - AI Educational Assistant</title>
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Learning Hub</title>
+<style>
+body{font-family:Arial;background:#0f0f0f;color:white;padding:20px;margin:0}
+h1{color:#00ff88;text-align:center;margin-top:10px}
+.card{background:#1e1e1e;padding:20px;border-radius:15px;margin:15px 0}
+input,button{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:none;font-size:16px;box-sizing:border-box}
+input{background:#2a2a2a;color:white;outline:none;border:1px solid #444}
+button{background:#00ff88;color:black;font-weight:bold;cursor:pointer}
+button:active{transform:scale(0.98)}
+#result{background:#2a2a2a;padding:15px;border-radius:10px;white-space:pre-wrap;margin-top:15px;min-height:50px;border:1px solid #333}
+</style>
 </head>
-
 <body>
+<h1>🚀 AI Learning Hub</h1>
 
-<header>
-    <div class="logo">🎓 EduGenie</div>
-    <p>AI-Powered Educational Assistant</p>
-</header>
-
-<section class="hero">
-    <h1>Learn Smarter with EduGenie</h1>
-    <p>
-        Ask questions, understand concepts, generate quizzes,
-        summarize content and create personalized learning paths.
-    </p>
-</section>
-
-<div class="container">
-
-    <!-- Ask Question -->
-    <div class="card">
-        <h2>💡 Ask EduGenie</h2>
-
-        <input
-            type="text"
-            id="question"
-            placeholder="Ask a question..."
-        >
-
-        <button onclick="askQuestion()">Ask Question</button>
-
-        <div id="answer" class="result"></div>
-    </div>
-
-    <!-- Quiz -->
-    <div class="card">
-        <h2>📝 Generate Quiz</h2>
-
-        <input
-            type="text"
-            id="topic"
-            placeholder="Enter a topic e.g. Pythagoras Theorem"
-        >
-
-        <button onclick="generateQuiz()">Generate Quiz</button>
-
-        <div id="quiz" class="result"></div>
-    </div>
-
-    <!-- Learning Path -->
-    <div class="card">
-        <h2>📚 Learning Path</h2>
-
-        <input
-            type="text"
-            id="learningTopic"
-            placeholder="Enter topic e.g. SQL"
-        >
-
-        <button onclick="generatePath()">Create Learning Path</button>
-
-        <div id="path" class="result"></div>
-    </div>
-
-    <!-- Summary -->
-    <div class="card">
-        <h2>📖 Text Summarizer</h2>
-
-        <textarea
-            id="text"
-            placeholder="Paste educational text here..."
-        ></textarea>
-
-        <button onclick="summarizeText()">Summarize</button>
-
-        <div id="summary" class="result"></div>
-    </div>
-
+<div class="card">
+<h3>📚 7-Day Plan</h3>
+<input id="goal" placeholder="Ex: Python, Java, AI...">
+<button onclick="getPlan()">Get Plan</button>
 </div>
 
-<footer>
-    <p>© 2026 EduGenie | AI-Powered Learning Assistant</p>
-</footer>
+<div class="card">
+<h3>🔗 Resources</h3>
+<input id="topic" placeholder="Ex: React, ML...">
+<button onclick="getRes()">Get Resources</button>
+</div>
 
-<script src="script.js"></script>
+<div class="card">
+<h3>🗺️ Career Roadmap</h3>
+<input id="career" placeholder="Ex: Data Scientist...">
+<button onclick="getRoadmap()">Get Roadmap</button>
+</div>
 
+<div id="result">Result inga varum da...</div>
+
+<script>
+async function getPlan(){
+ let g=document.getElementById('goal').value.trim();
+ if(!g) return alert("Goal enter pannu da!");
+ document.getElementById('result').innerText="Loading...";
+ let r=await fetch('/plan/'+encodeURIComponent(g));
+ let d=await r.json();
+ document.getElementById('result').innerText=d.result;
+}
+async function getRes(){
+ let t=document.getElementById('topic').value.trim();
+ if(!t) return alert("Topic enter pannu da!");
+ document.getElementById('result').innerText="Loading...";
+ let r=await fetch('/resources/'+encodeURIComponent(t));
+ let d=await r.json();
+ document.getElementById('result').innerText=d.result;
+}
+async function getRoadmap(){
+ let c=document.getElementById('career').value.trim();
+ if(!c) return alert("Career enter pannu da!");
+ document.getElementById('result').innerText="Loading...";
+ let r=await fetch('/roadmap/'+encodeURIComponent(c));
+ let d=await r.json();
+ document.getElementById('result').innerText=d.result;
+}
+</script>
 </body>
 </html>
